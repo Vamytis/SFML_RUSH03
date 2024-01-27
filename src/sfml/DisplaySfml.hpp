@@ -35,4 +35,7 @@ class DisplaySfml : public Krell::IDisplay {
         sf::Vector2f get_position(float x, float y);
 };
 
+void made_rond_rect(sf::Vector2f size, sf::Vector2f pos, sf::Color color,
+    sf::RenderWindow &window);
+
 #endif /* !DISPLAYSFML_HPP_ */

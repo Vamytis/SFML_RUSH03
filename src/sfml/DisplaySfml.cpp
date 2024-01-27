@@ -50,6 +50,11 @@ void DisplaySfml::set_sprite()
     SYS_sprite.setPosition(get_position(15, 140));
 }
 
+void display_sys(void)
+{
+    
+}
+
 void DisplaySfml::launch_sfml(void)
 {
     sf::Event event;
@@ -67,6 +72,7 @@ void DisplaySfml::launch_sfml(void)
         window.draw(CPU_sprite);
         window.draw(RAM_sprite);
         window.draw(SYS_sprite);
+        made_rond_rect(get_position(200, 100), get_position(100, 100), sf::Color::Blue, window);
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
