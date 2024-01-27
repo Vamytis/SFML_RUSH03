@@ -27,6 +27,10 @@ class DisplaySfml : public Krell::IDisplay {
         sf::Sprite CPU_sprite;
         sf::Sprite RAM_sprite;
         sf::Sprite SYS_sprite;
+        bool rect_visible;
+        bool _ram = false;
+        bool _cpu = false;
+        bool _sys = false;
     public:
         DisplaySfml();
         ~DisplaySfml();
@@ -37,5 +41,6 @@ class DisplaySfml : public Krell::IDisplay {
 
 void made_rond_rect(sf::Vector2f size, sf::Vector2f pos, sf::Color color,
     sf::RenderWindow &window);
+sf::Color RGB(int r, int g, int b);
 
 #endif /* !DISPLAYSFML_HPP_ */

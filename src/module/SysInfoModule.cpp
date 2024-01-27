@@ -38,7 +38,6 @@ char* SysInfoModule::TimeDate()
     return dateTime;
 }
 
-
 std::string SysInfoModule::GetKernem()
 {
     std::ifstream fileStream("/proc/version");

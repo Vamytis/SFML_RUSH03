@@ -8,7 +8,7 @@
 #ifndef RAMMODULE_HPP_
 #define RAMMODULE_HPP_
 
-//#include <sys/sysinfo.h>
+#include <sys/sysinfo.h>
 
 class RamModule {
     public:

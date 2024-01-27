@@ -12,11 +12,11 @@ RamModule::RamModule() {
 }
 
 void RamModule::get_ram_usage() {
-    // struct sysinfo i;
-    // sysinfo(&i);
-    // float total_minus_free = i.totalram - i.freeram;
-    // float total = i.totalram;
-    // _ram_usage = (total_minus_free / total) * 100;
-    // _total_ram = total;
-    // _free_ram = i.freeram;
+    struct sysinfo i;
+    sysinfo(&i);
+    float total_minus_free = i.totalram - i.freeram;
+    float total = i.totalram;
+    _ram_usage = (total_minus_free / total) * 100;
+    _total_ram = total;
+    _free_ram = i.freeram;
 }

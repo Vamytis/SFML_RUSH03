@@ -50,11 +50,6 @@ void DisplaySfml::set_sprite()
     SYS_sprite.setPosition(get_position(15, 140));
 }
 
-void display_sys(void)
-{
-
-}
-
 void DisplaySfml::launch_sfml(void)
 {
     sf::Event event;
@@ -73,36 +68,27 @@ void DisplaySfml::launch_sfml(void)
                     if (event.mouseButton.button == sf::Mouse::Left) {
                         sf::Vector2f mousePosition = window.mapPixelToCoords(sf::Mouse::getPosition(window));
                     if (CPU_sprite.getGlobalBounds().contains(mousePosition)) {
-                       if (rect_visible) {
-                            rect_visible = false;
-                        } else {
-                            rect_visible = true;
-                            made_rond_rect(get_position(250, 100), get_position(100, 100), sf::Color::Blue, window);
-                        }
+                       _cpu = !_cpu;
                     }
 
                     if (RAM_sprite.getGlobalBounds().contains(mousePosition)) {
-                        if (rect_visible) {
-                            rect_visible = false;
-                        } else {
-                            rect_visible = true;
-                            made_rond_rect(get_position(250, 100), get_position(100, 100), sf::Color::Blue, window);
-                        }
+                        _ram = !_ram;
                     }
 
                     if (SYS_sprite.getGlobalBounds().contains(mousePosition)) {
-                         if (rect_visible) {
-                            rect_visible = false;
-                        } else {
-                            rect_visible = true;
-                            made_rond_rect(get_position(50, 100), get_position(100, 100), sf::Color::Blue, window);
-                        }
+                        _sys = !_sys;
                     }
                 }
             }
         }
-        if (rect_visible) {
-            made_rond_rect(get_position(50, 100), get_position(100, 100), sf::Color::Blue, window);
+        if (_cpu == true) {
+            made_rond_rect(get_position(50, 100), get_position(100, 100), RGB(10,15,10), window);
+        }
+        if (_sys == true) {
+            made_rond_rect(get_position(100, 50), get_position(200, 200), RGB(15,0,15), window);
+        }
+        if (_ram == true) {
+            made_rond_rect(get_position(150, 100), get_position(300, 300), RGB(10,150,10), window);
         }
         window.display();
     }

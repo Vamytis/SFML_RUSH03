@@ -7,6 +7,15 @@
 
 #include <SFML/Graphics.hpp>
 
+sf::Color RGB(int r, int g, int b)
+{
+    sf::Color color;
+    color.r = r;
+    color.g = g;
+    color.b = b;
+    return color;
+}
+
 sf::Vector2f get_position(float x, float y)
 {
     sf::Vector2f vector;
