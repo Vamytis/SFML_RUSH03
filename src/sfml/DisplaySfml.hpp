@@ -19,14 +19,20 @@ class DisplaySfml : public Krell::IDisplay {
         sf::RenderWindow window;
         sf::Font font;
         sf::Text text;
+        sf::Sprite background;
+        sf::Texture backgroundTexture;
+        sf::Texture CPU_texture;
+        sf::Texture RAM_texture;
+        sf::Texture SYS_texture;
+        sf::Sprite CPU_sprite;
+        sf::Sprite RAM_sprite;
+        sf::Sprite SYS_sprite;
     public:
         DisplaySfml();
         ~DisplaySfml();
         void launch_sfml();
-        void displaySys();
-        void render();
-       void display();
-        void processEvents();
+        void set_sprite();
+        sf::Vector2f get_position(float x, float y);
 };
 
 #endif /* !DISPLAYSFML_HPP_ */
