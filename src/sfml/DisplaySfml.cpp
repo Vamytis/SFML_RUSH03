@@ -70,6 +70,21 @@ void DisplaySfml::launch_sfml(void)
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
+            }  else if (event.type == sf::Event::MouseButtonPressed) {
+                    if (event.mouseButton.button == sf::Mouse::Left) {
+                        sf::Vector2f mousePosition = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                    if (CPU_sprite.getGlobalBounds().contains(mousePosition)) {
+                        std::cout << "CPU" << std::endl;
+                    }
+
+                    if (RAM_sprite.getGlobalBounds().contains(mousePosition)) {
+                        std::cout << "RAM" << std::endl;
+                    }
+
+                    if (SYS_sprite.getGlobalBounds().contains(mousePosition)) {
+                        std::cout << "SYS" << std::endl;
+                    }
+                }
             }
         }
         window.display();
