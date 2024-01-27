@@ -52,27 +52,20 @@ void DisplaySfml::set_sprite()
 
 void display_sys(void)
 {
-    
+
 }
 
 void DisplaySfml::launch_sfml(void)
 {
     sf::Event event;
     font.loadFromFile("./assets/fonts/RobotoRegular.ttf");
-    text.setString("Bonjour, SFML !");
-    text.setFont(font);
-    text.setCharacterSize(29);
-    text.setFillColor(sf::Color::White);
-    text.setPosition(10, 10);
     while (window.isOpen()) {
         set_sprite();
         window.clear(sf::Color::Black);
         window.draw(background);
-        //window.draw(text);
         window.draw(CPU_sprite);
         window.draw(RAM_sprite);
         window.draw(SYS_sprite);
-        made_rond_rect(get_position(200, 100), get_position(100, 100), sf::Color::Blue, window);
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
@@ -80,18 +73,36 @@ void DisplaySfml::launch_sfml(void)
                     if (event.mouseButton.button == sf::Mouse::Left) {
                         sf::Vector2f mousePosition = window.mapPixelToCoords(sf::Mouse::getPosition(window));
                     if (CPU_sprite.getGlobalBounds().contains(mousePosition)) {
-                        std::cout << "CPU" << std::endl;
+                       if (rect_visible) {
+                            rect_visible = false;
+                        } else {
+                            rect_visible = true;
+                            made_rond_rect(get_position(250, 100), get_position(100, 100), sf::Color::Blue, window);
+                        }
                     }
 
                     if (RAM_sprite.getGlobalBounds().contains(mousePosition)) {
-                        std::cout << "RAM" << std::endl;
+                        if (rect_visible) {
+                            rect_visible = false;
+                        } else {
+                            rect_visible = true;
+                            made_rond_rect(get_position(250, 100), get_position(100, 100), sf::Color::Blue, window);
+                        }
                     }
 
                     if (SYS_sprite.getGlobalBounds().contains(mousePosition)) {
-                        std::cout << "SYS" << std::endl;
+                         if (rect_visible) {
+                            rect_visible = false;
+                        } else {
+                            rect_visible = true;
+                            made_rond_rect(get_position(50, 100), get_position(100, 100), sf::Color::Blue, window);
+                        }
                     }
                 }
             }
+        }
+        if (rect_visible) {
+            made_rond_rect(get_position(50, 100), get_position(100, 100), sf::Color::Blue, window);
         }
         window.display();
     }
