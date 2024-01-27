@@ -58,6 +58,7 @@ void DisplaySfml::launch_sfml(void)
         set_sprite();
         window.clear(sf::Color::Black);
         window.draw(background);
+
         window.draw(CPU_sprite);
         window.draw(RAM_sprite);
         window.draw(SYS_sprite);
@@ -81,14 +82,14 @@ void DisplaySfml::launch_sfml(void)
                 }
             }
         }
+        if (_ram == true) {
+            made_rond_rect(get_position(300, 100), get_position(250, 100), RGB(0,100,0), window);
+        }
         if (_cpu == true) {
-            made_rond_rect(get_position(50, 100), get_position(100, 100), RGB(10,15,10), window);
+            made_rond_rect(get_position(300, 100), get_position(250, 250), RGB(178,34,34), window);
         }
         if (_sys == true) {
-            made_rond_rect(get_position(100, 50), get_position(200, 200), RGB(15,0,15), window);
-        }
-        if (_ram == true) {
-            made_rond_rect(get_position(150, 100), get_position(300, 300), RGB(10,150,10), window);
+            made_rond_rect(get_position(300, 100), get_position(250, 400), RGB(0,0,205), window);
         }
         window.display();
     }
